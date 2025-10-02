@@ -1,0 +1,173 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f3f6fb;
+    margin: 0;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 18px 36px;
+    box-shadow: 0 2px 8px rgba(120, 120, 120, 0.05);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1b4c76;
+}
+
+nav a {
+    margin: 0 14px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+nav a.active,
+nav a:hover {
+    color: #48a3f2;
+}
+
+.lang-search {
+    display: flex;
+    align-items: center;
+}
+
+.lang-search select {
+    margin-right: 14px;
+    padding: 6px;
+}
+
+.lang-search input {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 10px;
+}
+
+.intro {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.intro h1 {
+    font-size: 2.7rem;
+    margin-bottom: 24px;
+}
+
+.intro p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.actions {
+    margin-top: 22px;
+}
+
+button.primary {
+    background: #48a3f2;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 7px;
+    margin-right: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button {
+    background: #f5f8fa;
+    color: #444;
+    border: none;
+    padding: 13px 26px;
+    border-radius: 7px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #e1eef8;
+}
+
+section.monasteries {
+    display: flex;
+    gap: 36px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.monastery-card {
+    background: #fff;
+    border-radius: 9px;
+    box-shadow: 0 1px 8px rgba(48, 120, 180, 0.07);
+    overflow: hidden;
+    max-width: 420px;
+    flex: 1 1 420px;
+    display: flex;
+    flex-direction: column;
+}
+
+.monastery-img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.monastery-info {
+    padding: 24px 20px;
+}
+
+.monastery-info h2 {
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+    color: #234e7a;
+}
+
+.monastery-info p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 1rem;
+}
+
+.location {
+    display: block;
+    margin-top: 8px;
+    color: #1b4c76;
+    font-weight: bold;
+    font-size: 0.98rem;
+}
+
+button.tour {
+    margin-top: 17px;
+    background: #48a3f2;
+    color: #fff;
+    padding: 9px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.98rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 950px) {
+    section.monasteries {
+        flex-direction: column;
+        gap: 22px;
+        align-items: center;
+    }
+
+    main {
+        padding: 24px 5px;
+    }
+}

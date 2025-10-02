@@ -1,0 +1,48 @@
+/* Banner Section */
+/* Banner Section */
+.banner {
+  background: white ;
+              
+  height: 60vh;
+  margin-top: 56px; /* Navbar height */
+  text-align: center;
+   /* enable 3D space */
+}
+
+.banner h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: black;
+  text-shadow: 2px 2px 0 #444, 4px 4px 0 #222; /* 3D shadow effect */
+  transition: transform 0.3s ease;
+}
+
+.banner p {
+  font-size: 1.2rem;
+  color: black;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+  transition: transform 0.3s ease;
+}
+
+
+/* 3D Hover Effect on Cards */
+.custom-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.custom-card:hover {
+  transform: perspective(800px) rotateY(8deg) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.custom-card img {
+  height: 250px;
+  object-fit: cover;
+}
+.g-6 {
+  --bs-gutter-x: 10rem; /* horizontal gap between cols */
+  --bs-gutter-y: 4rem; /* vertical gap between rows */
+}
+
