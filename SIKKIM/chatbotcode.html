@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sikkim Travel Chatbot - Multilingual Assistant</title>
+    <link
+      rel="stylesheet"
+      href="
+    chatbot.css"
+    />
+
+    <!-- Google Fonts for multilingual support -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,300..900;1,300..900&family=Noto+Sans+Devanagari:wght@100..900&family=Noto+Sans+Tibetan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Demo page styles - remove when embedding */
+      .demo-container {
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          var(--color-bg-1) 0%,
+          var(--color-bg-3) 50%,
+          var(--color-bg-8) 100%
+        );
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: var(--space-32);
+        text-align: center;
+      }
+
+      .demo-title {
+        font-size: var(--font-size-4xl);
+        font-weight: var(--font-weight-bold);
+        margin-bottom: var(--space-16);
+        color: var(--color-text);
+      }
+
+      .demo-description {
+        font-size: var(--font-size-lg);
+        color: var(--color-text-secondary);
+        max-width: 600px;
+        margin-bottom: var(--space-32);
+        line-height: 1.6;
+      }
+
+      .demo-features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: var(--space-20);
+        max-width: 1000px;
+        margin-bottom: var(--space-32);
+      }
+
+      .demo-feature {
+        background: var(--color-surface);
+        padding: var(--space-20);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-card-border);
+      }
+
+      .demo-feature h3 {
+        color: var(--color-primary);
+        margin-bottom: var(--space-12);
+      }
+
+      .demo-cta {
+        background: var(--color-bg-2);
+        padding: var(--space-24);
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--color-card-border);
+        margin-top: var(--space-32);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Chat Widget Toggle Button -->
+    <div
+      id="chat-widget-toggle"
+      class="chat-widget-toggle"
+      aria-label="Open travel assistant"
+    >
+      <div class="chat-icon">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M21 15C21 15.5304 20.7893 16.0391 20.4142 16.4142C20.0391 16.7893 19.5304 17 19 17H7L3 21V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V15Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div class="close-icon hidden">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18 6L6 18M6 6L18 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
+      <div class="notification-badge" id="notification-badge">1</div>
+    </div>
+
+    <!-- Chat Widget Container -->
+    <div id="chat-widget" class="chat-widget hidden">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="chat-avatar">🏔️</div>
+          <div class="chat-title">
+            <h3 id="chat-bot-name">Sikkim Travel Assistant</h3>
+            <p id="chat-status">Online</p>
+          </div>
+        </div>
+        <div class="chat-header-actions">
+          <button
+            id="language-toggle"
+            class="language-toggle"
+            title="Change Language"
+          >
+            <span id="current-language-flag">🇬🇧</span>
+          </button>
+          <button id="chat-minimize" class="chat-action-btn" title="Minimize">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M18 15L12 9L6 15"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Language Selection Panel -->
+      <div id="language-panel" class="language-panel hidden">
+        <div class="language-panel-header">
+          <h4>Choose Your Language</h4>
+          <p>भाषा चुनें / Choose Language</p>
+        </div>
+        <div class="language-options">
+          <button class="language-option" data-lang="english">
+            <span class="language-flag">🇬🇧</span>
+            <div class="language-info">
+              <span class="language-name">English</span>
+              <span class="language-native">English</span>
+            </div>
+          </button>
+          <button class="language-option" data-lang="hindi">
+            <span class="language-flag">🇮🇳</span>
+            <div class="language-info">
+              <span class="language-name">Hindi</span>
+              <span class="language-native">हिंदी</span>
+            </div>
+          </button>
+          <button class="language-option" data-lang="nepali">
+            <span class="language-flag">🇳🇵</span>
+            <div class="language-info">
+              <span class="language-name">Nepali</span>
+              <span class="language-native">नेपाली</span>
+            </div>
+          </button>
+          <button class="language-option" data-lang="lepcha">
+            <span class="language-flag">🏔️</span>
+            <div class="language-info">
+              <span class="language-name">Lepcha</span>
+              <span class="language-native">Lepcha</span>
+            </div>
+          </button>
+          <button class="language-option" data-lang="bhutia">
+            <span class="language-flag">🏔️</span>
+            <div class="language-info">
+              <span class="language-name">Bhutia</span>
+              <span class="language-native">Bhutia</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Chat Messages Area -->
+      <div id="chat-messages" class="chat-messages">
+        <!-- Messages will be dynamically added here -->
+      </div>
+
+      <!-- Typing Indicator -->
+      <div id="typing-indicator" class="typing-indicator hidden">
+        <div class="typing-avatar">🏔️</div>
+        <div class="typing-animation">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div id="quick-actions" class="quick-actions">
+        <!-- Quick action buttons will be dynamically added -->
+      </div>
+
+      <!-- Chat Input -->
+      <div class="chat-input-container">
+        <div class="chat-input-wrapper">
+          <input
+            type="text"
+            id="chat-input"
+            class="chat-input"
+            placeholder="Type your message..."
+            maxlength="500"
+          />
+          <button id="chat-send" class="chat-send-btn" type="button">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M22 2L11 13M22 2L15 22L11 13M22 2L2 9L11 13"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sikkim Travel Chatbot Widget - END EMBEDDING HERE -->
+
+    <script src="app.js"></script>
+  </body>
+</html>

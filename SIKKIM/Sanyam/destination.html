@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title style ="color:aquamarine">Explore Destinations | Namaste Sikkim</title>
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="mapppss.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Navbar -->
+     <header class="bg-white shadow-sm py-4 px-8 flex flex-col md:flex-row items-center justify-between">
+        <div class="text-2xl font-bold text-blue-900 mb-2 md:mb-0">Namaste Sikkim</div>
+        <nav class="flex space-x-5 text-gray-700 font-medium">
+      <a href="../homepage/homepage.html">Home</a>
+      <a href="../Sanyam/destination.html">Destinations</a>
+      <a href="../Sanyam/monastries.html">360 View Tour</a>
+      <a href="../cultureandheritage/C&H.html">Cultural Heritage</a>
+      <a href="../cssproject/contactus/contact.html">Contact Us</a>
+      <a href="../cssproject/research/research.html">Research hub</a>
+      
+      
+
+      
+    </nav>
+    <div class="flex items-center space-x-3 mt-2 md:mt-0">
+            <select class="px-2 py-1 rounded border border-gray-300">
+                <option>English</option>
+            </select>
+            <input type="text" class="px-2 py-1 rounded border border-gray-300" placeholder="Search">
+        </div>
+  </header>
+
+    <!-- Header -->
+    <section class="text-center py-12 bg-gradient-to-b from-blue-50 to-white">
+        <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Explore Destinations</h1>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">Discover the breathtaking beauty of Sikkim through
+            our curated collection of monasteries, lakes, adventure sports, wildlife, and more.</p>
+    </section>
+
+    <!-- Search, Filter, and Categories -->
+    ">
+                    <div class="container my-8">
+  <div class="flex flex-col items-center gap-6">
+    
+    <!-- Search bar -->
+    <input type="text" class="px-4 py-2 w-full max-w-md rounded-full border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-300" placeholder="" />
+
+    <!-- Category Buttons -->
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="../Sanyam/monastries.html" class="px-5 py-2 rounded-full bg-blue-200 text-blue-800 font-medium hover:bg-blue-300 transition">Monasteries</a>
+      <a href="../Sanyam/lakes.html" class="px-5 py-2 rounded-full bg-cyan-200 text-cyan-800 font-medium hover:bg-cyan-300 transition">Lakes</a>
+      <a href="../Sanyam/adventure.html" class="px-5 py-2 rounded-full bg-green-200 text-green-800 font-medium hover:bg-green-300 transition">Adventure Sports</a>
+      <a href="../Sanyam/wildlife.html" class="px-5 py-2 rounded-full bg-yellow-200 text-yellow-800 font-medium hover:bg-yellow-300 transition">Wildlife</a>
+    </div>
+
+    <!-- Optional dropdown -->
+    <select class="px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-300">
+      <option selected>All Categories</option>
+      <option value="monasteries">Monasteries</option>
+      <option value="lakes">Lakes</option>
+      <option value="adventure">Adventure Sports</option>
+      <option value="wildlife">Wildlife</option>
+    </select>
+
+  </div>
+</div>
+    </section>
+
+<div class="container my-5">
+  <div class="row g-4">
+ <div class="col-md-3 d-flex">
+    <div class="card h-100 d-flex flex-column shadow hover:shadow-lg transition group">
+        <img src="Rumtek_Monastery_04.jpg" class="card-img-top object-cover" style="height: 200px; width: 100%;" alt="
+        Rumtek Monastery">
+        <div class="card-body d-flex flex-column">
+            <span class="inline-block px-2 py-1 bg-cyan-200 text-cyan-800 rounded text-xs mb-2">Monastery</span>
+            <h5 class="card-title font-bold">Rumtek Monastery</h5>
+            <p class="card-text text-gray-500">One of Sikkim's largest and most significant monasteries, a
+                            vibrant center of Buddhist learning.</p>
+            <a href="/monastries.html" class="text-blue-600 hover:underline mt-auto block">Explore</a>
+        </div>
+    </div>
+</div>
+
+
+       
+            <!-- Card example for Lake -->
+            <div class="col-md-3 d-flex">
+    <div class="card h-100 d-flex flex-column shadow hover:shadow-lg transition group">
+        <img src="tsomgolake.jpg" class="card-img-top object-cover" style="height: 200px; width: 100%;" alt="Tsomgo Lake">
+        <div class="card-body d-flex flex-column">
+            <span class="inline-block px-2 py-1 bg-cyan-200 text-cyan-800 rounded text-xs mb-2">Lake</span>
+            <h5 class="card-title font-bold">Tsomgo Lake</h5>
+            <p class="card-text text-gray-500">A sacred glacial lake at high altitude, known for its stunning beauty.</p>
+            <a href="/lakes.html" class="text-blue-600 hover:underline mt-auto block">Explore</a>
+        </div>
+    </div>
+</div>
+
+        
+            
+            <!-- Card example for Adventure Sports -->
+             <div class="col-md-3 d-flex">
+    <div class="card h-100 d-flex flex-column shadow hover:shadow-lg transition group">
+        <img src="Goechala-Trek.webp" class="card-img-top object-cover" style="height: 200px; width: 100%;" alt="Goechala Trek">
+        <div class="card-body d-flex flex-column">
+            <span class="inline-block px-2 py-1 bg-cyan-200 text-cyan-800 rounded text-xs mb-2">Adventure Sports</span>
+            <h5 class="card-title font-bold">Goechala-Trek</h5>
+            <p class="card-text text-gray-500">An iconic trek offering views of Kanchenjunga and Himalayan
+                            peaks.</p>
+            <a href="/adventures.html" class="text-blue-600 hover:underline mt-auto block">Explore</a>
+        </div>
+    </div>
+</div>
+ <!-- Card example for Wildlife -->
+        <div class="col-md-3 d-flex">
+    <div class="card h-100 d-flex flex-column shadow hover:shadow-lg transition group">
+        <img src="park1.avif" class="card-img-top object-cover" style="height: 200px; width: 100%;" alt="Khangchendzonga National Park">
+        <div class="card-body d-flex flex-column">
+            <span class="inline-block px-2 py-1 bg-cyan-200 text-cyan-800 rounded text-xs mb-2">Wildlife</span>
+            <h5 class="card-title font-bold">Khangchendzonga National Park</h5>
+            <p class="card-text text-gray-500">A UNESCO World Heritage site teeming with rich flora and
+                            fauna.</p>
+            <a href="/wildlife.html" class="text-blue-600 hover:underline mt-auto block">Explore</a>
+        </div>
+    </div>
+</div>
+
+
+
+            
+           
+            <!-- Add more cards as needed -->
+        </div>
+    </div>
+    <!-- Interactive Map Section -->
+    <section id="map-section" class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Explore Sikkim </h2>
+                <p>Click on any marker to explore destinations across the four districts of Sikkim</p>
+            </div>
+            <div class="map-container">
+                <div id="main-map" class="main-map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filters -->
+    <section id="filters" class="filters-section">
+        <div class="container">
+            <div class="filters-content">
+                <div class="search-box">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search destinations...">
+                </div>
+                <div class="filter-controls">
+                    <select id="district-filter" class="form-control">
+                        <option value="">All Districts</option>
+                        <option value="East Sikkim">East Sikkim</option>
+                        <option value="West Sikkim">West Sikkim</option>
+                        <option value="North Sikkim">North Sikkim</option>
+                        <option value="South Sikkim">South Sikkim</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinations Grid -->
+    <section id="destinations" class="destinations-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Top Destinations in Sikkim</h2>
+                <p>Discover the most breathtaking places across the Land of Hidden Treasures</p>
+            </div>
+            <div id="destinations-grid" class="destinations-grid">
+                <!-- Destination cards will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container flex flex-wrap justify-between">
+            <div>
+                <h6 class="font-bold text-lg mb-2">Namaste Sikkim</h6>
+                <p class="text-gray-300">Discover the mystical beauty of Sikkim with expertly crafted tours.</p>
+            </div>
+            <div>
+                <h6 class="font-bold mb-2">Quick Links</h6>
+                <ul class="space-y-1 text-gray-400">
+                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">Destinations</a></li>
+                    <li><a href="#" class="hover:underline">Monasteries</a></li>
+                </ul>
+            </div>
+            <div>
+                <h6 class="font-bold mb-2">Contact</h6>
+                <p class="text-gray-300">MG Marg, Gangtok, Sikkim</p>
+                <p class="text-gray-300">+91 98765 43210</p>
+                <p class="text-gray-300">info@namastesikkim.com</p>
+            </div>
+        </div>
+        <div class="text-center text-gray-400 text-sm mt-6">
+            © 2024 Namaste Sikkim Travel & Tours. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="maps.js"></script>
+</body>
+
+</html>
