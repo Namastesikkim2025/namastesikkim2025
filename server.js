@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/homepage', (req, res) => {
-  res.sendFile(path.join(__dirname, 'homepage/index.html'));
+  res.sendFile(path.join(__dirname, 'homepage/homepage.html'));
 });
 app.get('/homepage', (req, res) => {
   res.sendFile(path.join(__dirname, 'homepage/style.css'));
@@ -44,6 +44,6 @@ app.use('/api/monasteries', require('./src/routes/monasteries'));
 
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+app.listen(3200, () => {
+  console.log(`Server running at http://localhost:${3200}`);
 });
