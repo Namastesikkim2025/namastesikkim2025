@@ -226,60 +226,75 @@ class BudgetPredictorML:
     
     def train_models(self):
         """Train ML models for different travel types"""
-        print("Generating training data...")
-        df = self.generate_training_data(5000)
-        
-        # Feature columns
-        feature_cols = [
-            'distance_km', 'num_travelers', 'duration_days', 'month',
-            'seasonality_factor', 'dest_cost_factor', 'budget_economy',
-            'budget_midrange', 'budget_luxury'
-        ]
-        
-        X = df[feature_cols]
-        
-        # Train models for each travel type
-        travel_types = ['flight_cost', 'road_cost', 'general_cost']
-        
-        for travel_type in travel_types:
-            print(f"Training model for {travel_type}...")
+        try:
+            print("Generating training data...")
+            df = self.generate_training_data(1000)  # Reduce dataset size for testing
             
-            y = df[travel_type]
+            # Feature columns
+            feature_cols = [
+                'distance_km', 'num_travelers', 'duration_days', 'month',
+                'seasonality_factor', 'dest_cost_factor', 'budget_economy',
+                'budget_midrange', 'budget_luxury'
+            ]
             
-            # Split data
-            X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+            X = df[feature_cols]
+            print(f"Features shape: {X.shape}")
             
-            # Scale features
-            scaler = StandardScaler()
-            X_train_scaled = scaler.fit_transform(X_train)
-            X_test_scaled = scaler.transform(X_test)
+            # Train models for each travel type
+            travel_types = ['flight_cost', 'road_cost', 'general_cost']
             
-            # Train Random Forest model
-            model = RandomForestRegressor(
-                n_estimators=100,
-                max_depth=15,
-                min_samples_split=5,
-                min_samples_leaf=2,
-                random_state=42
-            )
-            
-            model.fit(X_train_scaled, y_train)
-            
-            # Store model and scaler
-            self.models[travel_type] = model
-            self.scalers[travel_type] = scaler
-            
-            # Calculate R² score
-            try:
-                train_score = model.score(X_train_scaled, y_train)
-                test_score = model.score(X_test_scaled, y_test)
-                print(f"{travel_type} - Train R²: {train_score:.3f}, Test R²: {test_score:.3f}")
-            except Exception as e:
-                print(f"Score calculation error for {travel_type}: {str(e)}")
+            for travel_type in travel_types:
+                print(f"Training model for {travel_type}...")
+                
+                y = df[travel_type]
+                print(f"Target shape: {y.shape}")
+                
+                # Check for any issues with the data
+                if X.isna().any().any() or y.isna().any():
+                    print("Warning: NaN values found in data, filling with median...")
+                    X = X.fillna(X.median())
+                    y = y.fillna(y.median())
+                
+                # Split data
+                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+                
+                # Scale features
+                scaler = StandardScaler()
+                X_train_scaled = scaler.fit_transform(X_train)
+                X_test_scaled = scaler.transform(X_test)
+                
+                # Train Random Forest model with simpler parameters
+                model = RandomForestRegressor(
+                    n_estimators=50,
+                    max_depth=10,
+                    random_state=42,
+                    n_jobs=1  # Use single thread to avoid resource issues
+                )
+                
+                model.fit(X_train_scaled, y_train)
+                
+                # Store model and scaler
+                self.models[travel_type] = model
+                self.scalers[travel_type] = scaler
+                
+                # Calculate R² score
+                try:
+                    train_score = model.score(X_train_scaled, y_train)
+                    test_score = model.score(X_test_scaled, y_test)
+                    print(f"{travel_type} - Train R²: {train_score:.3f}, Test R²: {test_score:.3f}")
+                except Exception as e:
+                    print(f"Score calculation error for {travel_type}: {str(e)}")
+                
                 print(f"{travel_type} model trained successfully")
-        
-        self.is_trained = True
-        print("Model training completed!")
+            
+            self.is_trained = True
+            print("Model training completed successfully!")
+            
+        except Exception as e:
+            print(f"Training error: {str(e)}")
+            import traceback
+            traceback.print_exc()
+            raise e
     
     def predict_travel_cost(self, 
                            distance_km: float,
