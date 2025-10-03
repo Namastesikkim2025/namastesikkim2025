@@ -141,9 +141,9 @@ class BudgetPredictorML:
         
         for i in range(n_samples):
             # Random source and destination
-            source_dest = np.random.choice(destinations, 2, replace=False)
-            source_info = source_dest[0]
-            dest_info = source_dest[1]
+            indices = np.random.choice(len(destinations), 2, replace=False)
+            source_info = destinations[indices[0]]
+            dest_info = destinations[indices[1]]
             
             # Distance (km) - simulated realistic distances
             distance = np.random.uniform(200, 15000)
