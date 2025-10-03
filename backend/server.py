@@ -194,15 +194,15 @@ class BudgetPredictorML:
             )
             road_cost = max(8000, road_cost)  # minimum cost INR 8,000
             
-            # General travel cost (flight + accommodation + food + activities)
+            # General travel cost (flight + accommodation + food + activities) in INR
             general_cost = (
                 flight_cost +
                 accommodation_per_day * duration * avg_cost_factor * budget_mult +
                 food_per_day * duration * num_travelers * avg_cost_factor * budget_mult +
                 activities_per_day * duration * num_travelers * avg_cost_factor * budget_mult +
-                np.random.uniform(-300, 500)  # noise
+                np.random.uniform(-24000, 40000)  # noise in INR
             )
-            general_cost = max(200, general_cost)
+            general_cost = max(16000, general_cost)  # minimum cost INR 16,000
             
             # Create feature vector
             features = {
