@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namaste Sikkim - Navigation</title>
+    <style>
+        .nav-container {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .nav-title {
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .nav-link {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            font-size: 14px;
+            min-width: 120px;
+            text-align: center;
+        }
+        
+        .nav-link:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .nav-link.active {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-link {
+                width: 90%;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-container">
+        <h2 class="nav-title">🏔️ Namaste Sikkim - Explore All Pages</h2>
+        <div class="nav-links">
+            <a href="/" class="nav-link">🏠 Home</a>
+            <a href="/chatbot" class="nav-link">🤖 Chatbot</a>
+            <a href="/homepage" class="nav-link">🏔️ Homepage</a>
+            <a href="/culture" class="nav-link">🏛️ Culture</a>
+            <a href="/craft" class="nav-link">🎨 Art & Craft</a>
+            <a href="/adventure" class="nav-link">⛰️ Adventure</a>
+            <a href="/destinations" class="nav-link">🌄 Destinations</a>
+            <a href="/monasteries" class="nav-link">🕌 Monasteries</a>
+            <a href="/paragliding" class="nav-link">🪂 Paragliding</a>
+            <a href="/geyans" class="nav-link">📝 Geyans</a>
+            <a href="/contact" class="nav-link">📞 Contact</a>
+            <a href="/research" class="nav-link">🔬 Research</a>
+            <a href="/ocr" class="nav-link">📄 OCR Tool</a>
+            <a href="/translation" class="nav-link">🌐 Translation</a>
+            <a href="/index2" class="nav-link">🏡 Alt Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Highlight current page
+        const currentPath = window.location.pathname;
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            if (link.getAttribute('href') === currentPath || 
+                (currentPath === '/' && link.getAttribute('href') === '/')) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Add click animations
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>
