@@ -185,14 +185,14 @@ class BudgetPredictorML:
             )
             flight_cost = max(4000, flight_cost)  # minimum cost INR 4,000
             
-            # Road trip cost calculation  
+            # Road trip cost calculation (in INR)
             road_cost = (
                 road_base_cost_per_km * distance +
                 accommodation_per_day * duration * avg_cost_factor * budget_mult +
                 food_per_day * duration * num_travelers * avg_cost_factor * budget_mult +
-                np.random.uniform(-200, 300)  # noise
+                np.random.uniform(-16000, 24000)  # noise in INR
             )
-            road_cost = max(100, road_cost)
+            road_cost = max(8000, road_cost)  # minimum cost INR 8,000
             
             # General travel cost (flight + accommodation + food + activities)
             general_cost = (
