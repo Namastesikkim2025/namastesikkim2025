@@ -170,12 +170,12 @@ class BudgetPredictorML:
             # Budget multiplier
             budget_mult = budget_multipliers[budget_cat]
             
-            # Base costs per kilometer and day
-            flight_base_cost_per_km = np.random.uniform(0.08, 0.25)
-            road_base_cost_per_km = np.random.uniform(0.15, 0.35)  # includes fuel, tolls, wear
-            accommodation_per_day = np.random.uniform(30, 300)
-            food_per_day = np.random.uniform(20, 150)
-            activities_per_day = np.random.uniform(10, 200)
+            # Base costs per kilometer and day (in INR)
+            flight_base_cost_per_km = np.random.uniform(6, 20)  # INR 6-20 per km
+            road_base_cost_per_km = np.random.uniform(12, 28)  # includes fuel, tolls, wear (INR)
+            accommodation_per_day = np.random.uniform(2500, 25000)  # INR 2,500 - 25,000 per day
+            food_per_day = np.random.uniform(1500, 12000)  # INR 1,500 - 12,000 per day
+            activities_per_day = np.random.uniform(800, 16000)  # INR 800 - 16,000 per day
             
             # Flight cost calculation
             flight_cost = (
