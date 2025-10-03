@@ -177,13 +177,13 @@ class BudgetPredictorML:
             food_per_day = np.random.uniform(1500, 12000)  # INR 1,500 - 12,000 per day
             activities_per_day = np.random.uniform(800, 16000)  # INR 800 - 16,000 per day
             
-            # Flight cost calculation
+            # Flight cost calculation (in INR)
             flight_cost = (
                 flight_base_cost_per_km * distance * 
                 avg_cost_factor * seasonality * budget_mult * num_travelers +
-                np.random.uniform(-100, 200)  # noise
+                np.random.uniform(-8000, 16000)  # noise in INR
             )
-            flight_cost = max(50, flight_cost)  # minimum cost
+            flight_cost = max(4000, flight_cost)  # minimum cost INR 4,000
             
             # Road trip cost calculation  
             road_cost = (
