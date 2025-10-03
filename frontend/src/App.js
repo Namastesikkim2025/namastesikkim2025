@@ -117,7 +117,7 @@ function App() {
             Budget Predictor
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Get accurate travel cost predictions for flights, road trips, and complete travel packages using advanced machine learning
+            Get accurate travel cost predictions in Indian Rupees for flights, road trips, and complete travel packages using advanced machine learning
           </p>
         </div>
 
