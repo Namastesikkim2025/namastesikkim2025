@@ -255,17 +255,17 @@ function App() {
                     <SelectContent>
                       <SelectItem value="economy">
                         <span className="flex items-center gap-2">
-                          💰 Economy
+                          💰 Budget (Economy)
                         </span>
                       </SelectItem>
                       <SelectItem value="mid-range">
                         <span className="flex items-center gap-2">
-                          💳 Mid-Range
+                          💳 Standard (Mid-Range)
                         </span>
                       </SelectItem>
                       <SelectItem value="luxury">
                         <span className="flex items-center gap-2">
-                          💎 Luxury
+                          💎 Premium (Luxury)
                         </span>
                       </SelectItem>
                     </SelectContent>
