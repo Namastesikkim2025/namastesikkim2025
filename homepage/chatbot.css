@@ -778,6 +778,7 @@ select.form-control {
 /* Chat Widget Toggle Button */
 .chat-widget-toggle {
   position: fixed;
+  padding-left: 20px;
   bottom: 20px;
   /* 👈 instead of var(--space-24) */
   right: 20px;
