@@ -270,9 +270,13 @@ class BudgetPredictorML:
             self.scalers[travel_type] = scaler
             
             # Calculate R² score
-            train_score = model.score(X_train_scaled, y_train)
-            test_score = model.score(X_test_scaled, y_test)
-            print(f"{travel_type} - Train R²: {train_score:.3f}, Test R²: {test_score:.3f}")
+            try:
+                train_score = model.score(X_train_scaled, y_train)
+                test_score = model.score(X_test_scaled, y_test)
+                print(f"{travel_type} - Train R²: {train_score:.3f}, Test R²: {test_score:.3f}")
+            except Exception as e:
+                print(f"Score calculation error for {travel_type}: {str(e)}")
+                print(f"{travel_type} model trained successfully")
         
         self.is_trained = True
         print("Model training completed!")
