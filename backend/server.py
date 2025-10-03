@@ -326,8 +326,8 @@ class BudgetPredictorML:
             features_scaled = scaler.transform(features)
             predicted_cost = model.predict(features_scaled)[0]
             
-            # Calculate confidence based on model's performance
-            confidence = min(0.95, max(0.60, model.score(features_scaled, [predicted_cost]) if hasattr(model, 'score') else 0.80))
+            # Calculate confidence based on model's performance (use a fixed confidence for now)
+            confidence = 0.85
             
             # Create cost breakdown
             if travel_type == 'flight':
