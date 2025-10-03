@@ -1,10 +1,23 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose');
+const cors = require('cors');
+require('dotenv').config();
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3200;
 
+// Middlewares
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // Serve static files from the current directory (NAMASTESIKKIM)
 app.use(express.static(__dirname));
+
+// Connect to MongoDB
+const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/namaste_sikkim';
+mongoose.connect(mongoUri)
+  .then(() => console.log('✅ Connected to MongoDB'))
+  .catch((err) => console.error('❌ MongoDB connection error:', err.message));
 
 // Optional: Route for homepage or specific HTML file
 app.get('/', (req, res) => {
@@ -26,8 +39,11 @@ app.get('/craft', (req, res) => {
   res.sendFile(path.join(__dirname, 'webpageofartandcraft/art.html'));
 });
 
+// API routes
+app.use('/api/monasteries', require('./src/routes/monasteries'));
+
 
 // Start server
-app.listen(3200, () => {
-  console.log(`Server running at http://localhost:${3200}`);
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
 });
